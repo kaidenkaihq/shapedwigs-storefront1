@@ -1,0 +1,108 @@
+{% comment %}
+  ShapedWigs · Featured muses (featured products)
+  File: sections/sw-featured-muses.liquid
+{% endcomment %}
+
+<section class="sw-section sw-section--cream">
+  <div class="sw-container">
+    <div class="sw-section-head">
+      {% if section.settings.eyebrow != blank %}
+        <span class="sw-eyebrow">{{ section.settings.eyebrow }}</span>
+      {% endif %}
+      {% if section.settings.heading != blank %}
+        <h2>{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.subheading != blank %}
+        <p>{{ section.settings.subheading }}</p>
+      {% endif %}
+    </div>
+
+    {%- assign source_coll = collections[section.settings.collection] -%}
+    {%- assign products_to_show = section.settings.products_to_show | default: 4 -%}
+
+    <div class="sw-featured-grid">
+      {%- for product in source_coll.products limit: products_to_show -%}
+        {% render 'sw-product-card', product: product %}
+      {%- else -%}
+        {%- comment -%} Placeholder grid for editor preview {%- endcomment -%}
+        {%- for i in (1..4) -%}
+          <div class="card-wrapper">
+            <div class="card__media" style="aspect-ratio: 3/4; background: var(--sw-cream-deep); border-radius: 4px;"></div>
+            <div class="card__information">
+              <h3 class="card__heading">Product name</h3>
+              <div class="price"><span class="price-item price-item--regular">$0.00</span></div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endfor -%}
+    </div>
+
+    {% if section.settings.show_view_all %}
+      <div style="text-align: center; margin-top: 56px;">
+        <a href="{{ source_coll.url | default: '/collections/all' }}"
+           class="button"
+           style="background: var(--sw-charcoal); color: var(--sw-ivory); border: 1px solid var(--sw-charcoal);">
+          {{ section.settings.view_all_label | default: 'View all wigs' }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SW · Featured muses",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Featured pieces"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Meet the muses."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Each design is named, numbered, and styled by hand — a single piece of wearable craftsmanship."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Source collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Products to show",
+      "min": 4,
+      "max": 12,
+      "step": 4,
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show 'View all' button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "view_all_label",
+      "label": "'View all' button label",
+      "default": "View all wigs"
+    }
+  ],
+  "presets": [
+    {
+      "name": "SW · Featured muses"
+    }
+  ]
+}
+{% endschema %}

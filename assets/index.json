@@ -1,0 +1,106 @@
+{
+  "sections": {
+    "sw-hero": {
+      "type": "sw-hero",
+      "settings": {
+        "height": 640,
+        "eyebrow": "The bridal collection",
+        "heading": "<p>Hair, <em>handcrafted<\/em><br>for your forever moment.<\/p>",
+        "subheading": "Pre-styled, ready-to-wear wigs made from 100% Remy human hair — designed for brides who want effortless elegance on the most photographed day of their lives.",
+        "button_label_1": "Shop the collection",
+        "button_link_1": "shopify://collections/all",
+        "button_label_2": "Find your style",
+        "button_link_2": "shopify://pages/style-quiz"
+      }
+    },
+    "sw-trust": {
+      "type": "sw-trust-strip",
+      "blocks": {
+        "t1": { "type": "item", "settings": { "title": "100% Remy", "subtitle": "Human hair" } },
+        "t2": { "type": "item", "settings": { "title": "Hand-styled", "subtitle": "By artisans" } },
+        "t3": { "type": "item", "settings": { "title": "Worldwide", "subtitle": "Free over $500" } },
+        "t4": { "type": "item", "settings": { "title": "1-on-1", "subtitle": "Styling consult" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"]
+    },
+    "sw-mosaic": {
+      "type": "sw-collection-mosaic",
+      "settings": {
+        "eyebrow": "Curated collections",
+        "heading": "Find your signature.",
+        "subheading": "Four edits, each crafted for a different mood — from the timeless bridal silhouette to ready-to-wear everyday luxe."
+      },
+      "blocks": {
+        "m1": { "type": "collection", "settings": { "eyebrow": "Featured", "title": "Best-selling pre-styled wigs", "link_label": "Shop best sellers" } },
+        "m2": { "type": "collection", "settings": { "eyebrow": "Just landed", "title": "New arrivals", "link_label": "Discover" } },
+        "m3": { "type": "collection", "settings": { "eyebrow": "Everyday", "title": "Ready to wear", "link_label": "Shop now" } },
+        "m4": { "type": "collection", "settings": { "eyebrow": "Signature", "title": "Pre-styled wigs", "link_label": "Explore" } },
+        "m5": { "type": "collection", "settings": { "eyebrow": "Finish the look", "title": "Luxe accessories", "link_label": "Shop" } }
+      },
+      "block_order": ["m1", "m2", "m3", "m4", "m5"]
+    },
+    "sw-featured": {
+      "type": "sw-featured-muses",
+      "settings": {
+        "eyebrow": "Featured pieces",
+        "heading": "Meet the muses.",
+        "subheading": "Each design is named, numbered, and styled by hand — a single piece of wearable craftsmanship.",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "view_all_label": "View all wigs"
+      }
+    },
+    "sw-testimonial": {
+      "type": "sw-testimonial-band",
+      "settings": {
+        "eyebrow": "Brides talking"
+      },
+      "blocks": {
+        "q1": {
+          "type": "quote",
+          "settings": {
+            "quote": "I cried when I tried it on. It looked so naturally mine — every photographer at the wedding kept asking what salon I went to.",
+            "author": "Adaeze, bride · Lagos"
+          }
+        }
+      },
+      "block_order": ["q1"]
+    },
+    "sw-instagram": {
+      "type": "sw-instagram-strip",
+      "settings": {
+        "eyebrow": "@shapedwigs",
+        "heading": "As worn by our community.",
+        "subheading": "Tag @shapedwigs for a chance to be featured.",
+        "profile_url": "https://www.instagram.com/shapedwigs/"
+      },
+      "blocks": {
+        "i1": { "type": "tile" },
+        "i2": { "type": "tile" },
+        "i3": { "type": "tile" },
+        "i4": { "type": "tile" },
+        "i5": { "type": "tile" },
+        "i6": { "type": "tile" }
+      },
+      "block_order": ["i1", "i2", "i3", "i4", "i5", "i6"]
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": { "type": "heading", "settings": { "heading": "Be first. Save $20." } },
+        "paragraph": { "type": "paragraph", "settings": { "text": "<p>Get early access to new drops, styling tips from our atelier, and a $20 credit toward your first wig.<\/p>" } },
+        "email_form": { "type": "email_form" }
+      },
+      "block_order": ["heading", "paragraph", "email_form"]
+    }
+  },
+  "order": [
+    "sw-hero",
+    "sw-trust",
+    "sw-mosaic",
+    "sw-featured",
+    "sw-testimonial",
+    "sw-instagram",
+    "newsletter"
+  ]
+}

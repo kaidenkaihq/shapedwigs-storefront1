@@ -1,0 +1,67 @@
+{% comment %}
+  ShapedWigs · Testimonial band
+  File: sections/sw-testimonial-band.liquid
+{% endcomment %}
+
+{%- assign block = section.blocks.first -%}
+
+<section class="sw-testimonial">
+  {% if section.settings.eyebrow != blank %}
+    <span class="sw-eyebrow sw-eyebrow--light" style="display: block; margin-bottom: 28px;">
+      {{ section.settings.eyebrow }}
+    </span>
+  {% endif %}
+
+  {% if block %}
+    <blockquote {{ block.shopify_attributes }}>
+      &ldquo;{{ block.settings.quote }}&rdquo;
+    </blockquote>
+    {% if block.settings.author != blank %}
+      <cite>— {{ block.settings.author }}</cite>
+    {% endif %}
+  {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "SW · Testimonial",
+  "tag": "section",
+  "max_blocks": 1,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Brides talking"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Quote",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote",
+          "default": "I cried when I tried it on. It looked so naturally mine — every photographer at the wedding kept asking what salon I went to."
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author",
+          "default": "Adaeze, bride · Lagos"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SW · Testimonial",
+      "blocks": [
+        { "type": "quote" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,66 @@
+{% comment %}
+  ShapedWigs · Custom product card
+  File: snippets/sw-product-card.liquid
+
+  Usage: {% render 'sw-product-card', product: product %}
+{% endcomment %}
+
+{%- liquid
+  assign img = product.featured_image
+  assign hover_img = product.images[1]
+  assign on_sale = false
+  if product.compare_at_price > product.price
+    assign on_sale = true
+  endif
+-%}
+
+<a href="{{ product.url }}" class="card-wrapper" style="display: block; color: inherit; text-decoration: none;">
+  <div class="card__media" style="position: relative; aspect-ratio: 3/4; background: var(--sw-cream); border-radius: 4px; overflow: hidden; margin-bottom: 14px;">
+
+    {% if product.tags contains 'best-seller' or product.tags contains 'best seller' %}
+      <span class="badge" style="position: absolute; top: 12px; left: 12px; background: var(--sw-gold); color: var(--sw-charcoal); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; padding: 5px 10px; border-radius: 2px; z-index: 2;">Best seller</span>
+    {% elsif product.tags contains 'new' %}
+      <span class="badge" style="position: absolute; top: 12px; left: 12px; background: var(--sw-charcoal); color: var(--sw-gold-light); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; padding: 5px 10px; border-radius: 2px; z-index: 2;">New</span>
+    {% elsif on_sale %}
+      <span class="badge" style="position: absolute; top: 12px; left: 12px; background: var(--sw-charcoal); color: var(--sw-gold-light); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; padding: 5px 10px; border-radius: 2px; z-index: 2;">Sale</span>
+    {% endif %}
+
+    {% if img %}
+      <img src="{{ img | image_url: width: 800 }}"
+           srcset="{{ img | image_url: width: 400 }} 400w,
+                   {{ img | image_url: width: 800 }} 800w,
+                   {{ img | image_url: width: 1200 }} 1200w"
+           sizes="(min-width: 901px) 25vw, 50vw"
+           alt="{{ img.alt | default: product.title }}"
+           loading="lazy"
+           style="width: 100%; height: 100%; object-fit: cover; transition: transform .8s ease;">
+    {% else %}
+      <div style="width: 100%; height: 100%; background: var(--sw-cream-deep);"></div>
+    {% endif %}
+  </div>
+
+  <h3 class="card__heading" style="font-family: var(--sw-font-display); font-size: 20px; font-weight: 500; margin: 0 0 4px;">
+    {{ product.title | escape }}
+  </h3>
+
+  {%- if product.metafields.reviews.rating.value != blank or product.metafields.judgeme.badge != blank -%}
+    <div style="color: var(--sw-gold-deep); font-size: 11px; letter-spacing: 0.08em; margin-bottom: 4px;">
+      ★★★★★
+    </div>
+  {%- endif -%}
+
+  <div class="price">
+    {%- if product.price_varies -%}
+      <span class="price-item price-item--regular" style="font-size: 13px; letter-spacing: 0.04em;">
+        From {{ product.price_min | money }}
+      </span>
+    {%- elsif on_sale -%}
+      <span class="price-item price-item--sale" style="color: var(--sw-gold-deep); font-size: 13px;">{{ product.price | money }}</span>
+      <s class="price-item price-item--regular" style="color: var(--sw-muted); font-size: 13px; margin-left: 6px;">{{ product.compare_at_price | money }}</s>
+    {%- else -%}
+      <span class="price-item price-item--regular" style="font-size: 13px; letter-spacing: 0.04em;">
+        {{ product.price | money }}
+      </span>
+    {%- endif -%}
+  </div>
+</a>

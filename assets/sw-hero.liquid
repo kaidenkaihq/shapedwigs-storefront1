@@ -1,0 +1,127 @@
+{% comment %}
+  ShapedWigs · Custom hero section
+  File: sections/sw-hero.liquid
+
+  Drop into Dawn's `sections/` folder.
+  Add to home page via the theme editor → "Add section" → "SW · Hero".
+{% endcomment %}
+
+<section class="sw-hero" style="
+  {% if section.settings.bg_image %}
+    --sw-hero-min-height: {{ section.settings.height }}px;
+  {% endif %}
+">
+  {% if section.settings.bg_image %}
+    <img class="sw-hero-img"
+         src="{{ section.settings.bg_image | image_url: width: 2400 }}"
+         srcset="{{ section.settings.bg_image | image_url: width: 800 }} 800w,
+                 {{ section.settings.bg_image | image_url: width: 1600 }} 1600w,
+                 {{ section.settings.bg_image | image_url: width: 2400 }} 2400w"
+         sizes="100vw"
+         alt="{{ section.settings.bg_image.alt | default: section.settings.heading }}"
+         loading="eager">
+  {% endif %}
+
+  <div class="sw-hero-content">
+    {% if section.settings.eyebrow != blank %}
+      <span class="sw-eyebrow sw-eyebrow--light">{{ section.settings.eyebrow }}</span>
+    {% endif %}
+
+    {% if section.settings.heading != blank %}
+      <h1>{{ section.settings.heading }}</h1>
+    {% endif %}
+
+    {% if section.settings.subheading != blank %}
+      <p class="sw-hero-sub">{{ section.settings.subheading }}</p>
+    {% endif %}
+
+    <hr class="sw-gold-line">
+
+    {%- if section.settings.button_label_1 != blank or section.settings.button_label_2 != blank -%}
+      <div class="sw-hero-ctas">
+        {% if section.settings.button_label_1 != blank %}
+          <a href="{{ section.settings.button_link_1 | default: '#' }}"
+             class="button button--primary">
+            {{ section.settings.button_label_1 }}
+          </a>
+        {% endif %}
+        {% if section.settings.button_label_2 != blank %}
+          <a href="{{ section.settings.button_link_2 | default: '#' }}"
+             class="button button--secondary"
+             style="border-color: var(--sw-gold-light); color: var(--sw-gold-light);">
+            {{ section.settings.button_label_2 }}
+          </a>
+        {% endif %}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "SW · Hero",
+  "tag": "section",
+  "class": "sw-hero-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "label": "Hero height (px)",
+      "min": 480,
+      "max": 800,
+      "step": 20,
+      "default": 640
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "The bridal collection"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading (use <em> for italic gold accent)",
+      "default": "<p>Hair, <em>handcrafted</em><br>for your forever moment.</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Pre-styled, ready-to-wear wigs made from 100% Remy human hair — designed for brides who want effortless elegance on the most photographed day of their lives."
+    },
+    {
+      "type": "text",
+      "id": "button_label_1",
+      "label": "Primary button label",
+      "default": "Shop the collection"
+    },
+    {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "Secondary button label",
+      "default": "Find your style"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Secondary button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "SW · Hero"
+    }
+  ]
+}
+{% endschema %}

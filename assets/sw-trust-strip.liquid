@@ -1,0 +1,55 @@
+{% comment %}
+  ShapedWigs · Trust strip
+  File: sections/sw-trust-strip.liquid
+{% endcomment %}
+
+<div class="sw-trust">
+  <div class="sw-trust-grid">
+    {% for block in section.blocks %}
+      <div class="sw-trust-item" {{ block.shopify_attributes }}>
+        <strong>{{ block.settings.title }}</strong>
+        <span>{{ block.settings.subtitle }}</span>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "SW · Trust strip",
+  "tag": "section",
+  "max_blocks": 4,
+  "settings": [],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Trust item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "100% Remy"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Human hair"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SW · Trust strip",
+      "blocks": [
+        { "type": "item", "settings": { "title": "100% Remy", "subtitle": "Human hair" } },
+        { "type": "item", "settings": { "title": "Hand-styled", "subtitle": "By artisans" } },
+        { "type": "item", "settings": { "title": "Worldwide", "subtitle": "Free over $500" } },
+        { "type": "item", "settings": { "title": "1-on-1", "subtitle": "Styling consult" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
