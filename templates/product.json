@@ -34,6 +34,15 @@
           "type": "price",
           "settings": {}
         },
+        "made-to-order-status": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "uppercase",
+            "inventory_threshold": 10,
+            "show_inventory_quantity": false,
+            "made_to_order_text": "Made to Order — Ships in 3–4 Weeks"
+          }
+        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -49,6 +58,17 @@
           "settings": {
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": true
+          }
+        },
+        "made-to-order-faq": {
+          "type": "made_to_order_faq",
+          "settings": {
+            "question_1": "Why made-to-order?",
+            "answer_1": "<p>Each ShapedWigs unit is handcrafted specifically for your order using premium human hair. We do not mass-produce our wigs, which allows us to customize the finish, hairline, lace details, and styling with more care.</p>",
+            "question_2": "When will my order ship?",
+            "answer_2": "<p>Most pre-styled wigs require 3–4 weeks of processing before shipping. This allows time for customization, styling, quality check, and packaging.</p>",
+            "question_3": "Can I ask questions before ordering?",
+            "answer_3": "<p>Yes. Because each wig is handmade and all sales are final, we recommend contacting us before checkout if you need help with sizing, lace type, parting, styling, or timing.</p>"
           }
         },
         "description": {
@@ -103,9 +123,11 @@
         "title",
         "caption",
         "price",
+        "made-to-order-status",
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
+        "made-to-order-faq",
         "description",
         "collapsible-row-0",
         "collapsible-row-1",

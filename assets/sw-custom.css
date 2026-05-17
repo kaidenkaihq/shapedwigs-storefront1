@@ -288,6 +288,65 @@ h1.product__title {
 .product-form__buttons .button {
   width: 100% !important;
 }
+.sw-made-to-order-status {
+  width: fit-content;
+  max-width: 100%;
+  padding: 10px 14px;
+  border: 1px solid rgba(168, 132, 58, 0.34);
+  border-radius: 4px;
+  background: rgba(250, 247, 240, 0.78);
+  color: var(--sw-gold-deep);
+  font-family: var(--sw-font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.sw-made-to-order-status .svg-wrapper,
+.sw-made-to-order-status svg {
+  color: var(--sw-gold);
+}
+.sw-made-to-order-faq {
+  margin: 18px 0 0;
+  border-top: 1px solid rgba(168, 132, 58, 0.22);
+}
+.sw-made-to-order-faq details {
+  border-bottom: 1px solid rgba(168, 132, 58, 0.22);
+}
+.sw-made-to-order-faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 17px 0;
+  color: var(--sw-charcoal);
+  cursor: pointer;
+  font-family: var(--sw-font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.sw-made-to-order-faq summary::-webkit-details-marker {
+  display: none;
+}
+.sw-made-to-order-faq summary .icon-caret {
+  width: 12px;
+  color: var(--sw-gold-deep);
+  transition: transform 0.2s ease;
+}
+.sw-made-to-order-faq details[open] summary .icon-caret {
+  transform: rotate(180deg);
+}
+.sw-made-to-order-faq__content {
+  padding: 0 0 18px;
+  color: rgba(23, 20, 17, 0.76);
+  font-size: 14px;
+  line-height: 1.65;
+}
+.sw-made-to-order-faq__content p {
+  margin: 0;
+}
 .product-form__input label,
 .variant-input label,
 .product-form__input legend {

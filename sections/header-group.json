@@ -8,10 +8,10 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "Pre-styled bridal wigs, ready for your moment",
+            "text": "Custom-Made to Order | Premium Human Hair Wigs | 3–4 Week Lead Time",
             "text_alignment": "center",
             "color_scheme": "scheme-4",
-            "link": "shopify://collections/prestyled-wigs"
+            "link": ""
           }
         }
       },

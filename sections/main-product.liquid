@@ -142,54 +142,15 @@
                 </div>
               {%- when 'inventory' -%}
                 <p
-                  class="product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
+                  class="product__inventory sw-made-to-order-status{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
                   {{ block.shopify_attributes }}
                   id="Inventory-{{ section.id }}"
                   role="status"
                 >
-                  {%- if product.selected_or_first_available_variant.inventory_management == 'shopify' -%}
-                    {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
-                      {%- if product.selected_or_first_available_variant.inventory_quantity
-                          <= block.settings.inventory_threshold
-                      -%}
-                        <span class="svg-wrapper" style="color: rgb(238, 148, 65)">
-                          {{- 'icon-inventory-status.svg' | inline_asset_content -}}
-                        </span>
-                        {%- if block.settings.show_inventory_quantity -%}
-                          {{-
-                            'products.product.inventory_low_stock_show_count'
-                            | t: quantity: product.selected_or_first_available_variant.inventory_quantity
-                          -}}
-                        {%- else -%}
-                          {{- 'products.product.inventory_low_stock' | t -}}
-                        {%- endif -%}
-                      {%- else -%}
-                        <span class="svg-wrapper" style="color: rgb(62, 214, 96)">
-                          {{- 'icon-inventory-status.svg' | inline_asset_content -}}
-                        </span>
-                        {%- if block.settings.show_inventory_quantity -%}
-                          {{-
-                            'products.product.inventory_in_stock_show_count'
-                            | t: quantity: product.selected_or_first_available_variant.inventory_quantity
-                          -}}
-                        {%- else -%}
-                          {{- 'products.product.inventory_in_stock' | t -}}
-                        {%- endif -%}
-                      {%- endif -%}
-                    {%- else -%}
-                      {%- if product.selected_or_first_available_variant.inventory_policy == 'continue' -%}
-                        <span class="svg-wrapper" style="color: rgb(62, 214, 96)">
-                          {{- 'icon-inventory-status.svg' | inline_asset_content -}}
-                        </span>
-                        {{- 'products.product.inventory_out_of_stock_continue_selling' | t -}}
-                      {%- else -%}
-                        <span class="svg-wrapper" style="color: rgb(200, 200, 200)">
-                          {{- 'icon-inventory-status.svg' | inline_asset_content -}}
-                        </span>
-                        {{- 'products.product.inventory_out_of_stock' | t -}}
-                      {%- endif -%}
-                    {%- endif -%}
-                  {%- endif -%}
+                  <span class="svg-wrapper" aria-hidden="true">
+                    {{- 'icon-inventory-status.svg' | inline_asset_content -}}
+                  </span>
+                  <span>{{ block.settings.made_to_order_text }}</span>
                 </p>
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
@@ -483,8 +444,38 @@
                   product: product,
                   product_form_id: product_form_id,
                   section_id: section.id,
-                  show_pickup_availability: true
+                  show_pickup_availability: false
                 -%}
+              {%- when 'made_to_order_faq' -%}
+                <div class="sw-made-to-order-faq" {{ block.shopify_attributes }}>
+                  <details open>
+                    <summary>
+                      <span>{{ block.settings.question_1 }}</span>
+                      {{- 'icon-caret.svg' | inline_asset_content -}}
+                    </summary>
+                    <div class="sw-made-to-order-faq__content rte">
+                      {{ block.settings.answer_1 }}
+                    </div>
+                  </details>
+                  <details>
+                    <summary>
+                      <span>{{ block.settings.question_2 }}</span>
+                      {{- 'icon-caret.svg' | inline_asset_content -}}
+                    </summary>
+                    <div class="sw-made-to-order-faq__content rte">
+                      {{ block.settings.answer_2 }}
+                    </div>
+                  </details>
+                  <details>
+                    <summary>
+                      <span>{{ block.settings.question_3 }}</span>
+                      {{- 'icon-caret.svg' | inline_asset_content -}}
+                    </summary>
+                    <div class="sw-made-to-order-faq__content rte">
+                      {{ block.settings.answer_3 }}
+                    </div>
+                  </details>
+                </div>
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
@@ -855,6 +846,12 @@
           "id": "show_inventory_quantity",
           "label": "t:sections.main-product.blocks.inventory.settings.show_inventory_quantity.label",
           "default": true
+        },
+        {
+          "type": "text",
+          "id": "made_to_order_text",
+          "label": "Made-to-order message",
+          "default": "Made to Order — Ships in 3–4 Weeks"
         }
       ]
     },
@@ -925,6 +922,49 @@
           "default": true,
           "label": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.label",
           "info": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.info"
+        }
+      ]
+    },
+    {
+      "type": "made_to_order_faq",
+      "name": "Made-to-order FAQ",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "question_1",
+          "label": "Question 1",
+          "default": "Why made-to-order?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer_1",
+          "label": "Answer 1",
+          "default": "<p>Each ShapedWigs unit is handcrafted specifically for your order using premium human hair. We do not mass-produce our wigs, which allows us to customize the finish, hairline, lace details, and styling with more care.</p>"
+        },
+        {
+          "type": "text",
+          "id": "question_2",
+          "label": "Question 2",
+          "default": "When will my order ship?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer_2",
+          "label": "Answer 2",
+          "default": "<p>Most pre-styled wigs require 3–4 weeks of processing before shipping. This allows time for customization, styling, quality check, and packaging.</p>"
+        },
+        {
+          "type": "text",
+          "id": "question_3",
+          "label": "Question 3",
+          "default": "Can I ask questions before ordering?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer_3",
+          "label": "Answer 3",
+          "default": "<p>Yes. Because each wig is handmade and all sales are final, we recommend contacting us before checkout if you need help with sizing, lace type, parting, styling, or timing.</p>"
         }
       ]
     },
