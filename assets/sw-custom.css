@@ -221,13 +221,23 @@ h3.card__heading {
 .price-item,
 .price-item--regular {
   font-family: var(--sw-font-sans) !important;
-  font-size: 13px !important;
-  letter-spacing: 0.04em !important;
-  color: var(--sw-charcoal) !important;
-  font-weight: 500 !important;
+  font-size: 15px !important;
+  letter-spacing: 0.06em !important;
+  color: var(--sw-gold-deep) !important;
+  font-weight: 650 !important;
+  line-height: 1.25 !important;
 }
 .price--sale .price-item--sale {
   color: var(--sw-gold-deep) !important;
+  font-weight: 700 !important;
+}
+.price--on-sale .price-item--regular,
+.price s,
+s.price-item {
+  color: var(--sw-muted-soft) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  opacity: 0.78;
 }
 .card__media {
   border-radius: 4px !important;
@@ -270,8 +280,10 @@ h1.product__title {
 }
 .product__info-wrapper .price {
   font-family: var(--sw-font-display) !important;
-  font-size: 22px !important;
-  font-weight: 400 !important;
+  font-size: clamp(26px, 3vw, 34px) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.015em !important;
+  color: var(--sw-gold-deep) !important;
 }
 .product-form__buttons .button {
   width: 100% !important;
@@ -418,8 +430,9 @@ select.facets__sort {
 .totals__total-value,
 .cart-footer__price {
   font-family: var(--sw-font-display) !important;
-  font-size: 22px !important;
-  font-weight: 400 !important;
+  font-size: 26px !important;
+  font-weight: 500 !important;
+  color: var(--sw-gold-deep) !important;
 }
 
 /* Cart drawer specific */
@@ -1052,8 +1065,8 @@ label.form__label {
   .price,
   .price-item,
   .price-item--regular {
-    font-size: 12px !important;
-    letter-spacing: 0.02em !important;
+    font-size: 13px !important;
+    letter-spacing: 0.035em !important;
   }
   .badge {
     top: 8px !important;
@@ -1121,7 +1134,7 @@ label.form__label {
     line-height: 1.03 !important;
   }
   .product__info-wrapper .price {
-    font-size: 21px !important;
+    font-size: 28px !important;
   }
   .product-form__input,
   .product-form__buttons {

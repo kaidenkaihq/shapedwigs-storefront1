@@ -57,14 +57,14 @@
   {%- else -%}
     <div class="price">
       {%- if product.price_varies -%}
-        <span class="price-item price-item--regular" style="font-size: 13px; letter-spacing: 0.04em;">
+        <span class="price-item price-item--regular">
           From {{ product.price_min | money }}
         </span>
       {%- elsif on_sale -%}
-        <span class="price-item price-item--sale" style="color: var(--sw-gold-deep); font-size: 13px;">{{ product.price | money }}</span>
-        <s class="price-item price-item--regular" style="color: var(--sw-muted); font-size: 13px; margin-left: 6px;">{{ product.compare_at_price | money }}</s>
+        <span class="price-item price-item--sale">{{ product.price | money }}</span>
+        <s class="price-item price-item--regular" style="margin-left: 6px;">{{ product.compare_at_price | money }}</s>
       {%- else -%}
-        <span class="price-item price-item--regular" style="font-size: 13px; letter-spacing: 0.04em;">
+        <span class="price-item price-item--regular">
           {{ product.price | money }}
         </span>
       {%- endif -%}
