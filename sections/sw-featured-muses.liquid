@@ -22,7 +22,7 @@
 
     <div class="sw-featured-grid">
       {%- for product in source_coll.products limit: products_to_show -%}
-        {% render 'sw-product-card', product: product %}
+        {% render 'sw-product-card', product: product, hide_price: true %}
       {%- else -%}
         {%- comment -%} Placeholder grid for editor preview {%- endcomment -%}
         {%- for i in (1..4) -%}
@@ -30,7 +30,7 @@
             <div class="card__media" style="aspect-ratio: 3/4; background: var(--sw-cream-deep); border-radius: 4px;"></div>
             <div class="card__information">
               <h3 class="card__heading">Product name</h3>
-              <div class="price"><span class="price-item price-item--regular">$0.00</span></div>
+              <div class="price sw-price-masked"><span class="visually-hidden">Price available on product page</span></div>
             </div>
           </div>
         {%- endfor -%}

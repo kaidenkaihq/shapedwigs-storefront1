@@ -50,18 +50,24 @@
     </div>
   {%- endif -%}
 
-  <div class="price">
-    {%- if product.price_varies -%}
-      <span class="price-item price-item--regular" style="font-size: 13px; letter-spacing: 0.04em;">
-        From {{ product.price_min | money }}
-      </span>
-    {%- elsif on_sale -%}
-      <span class="price-item price-item--sale" style="color: var(--sw-gold-deep); font-size: 13px;">{{ product.price | money }}</span>
-      <s class="price-item price-item--regular" style="color: var(--sw-muted); font-size: 13px; margin-left: 6px;">{{ product.compare_at_price | money }}</s>
-    {%- else -%}
-      <span class="price-item price-item--regular" style="font-size: 13px; letter-spacing: 0.04em;">
-        {{ product.price | money }}
-      </span>
-    {%- endif -%}
-  </div>
+  {%- if hide_price -%}
+    <div class="price sw-price-masked">
+      <span class="visually-hidden">Price available on product page</span>
+    </div>
+  {%- else -%}
+    <div class="price">
+      {%- if product.price_varies -%}
+        <span class="price-item price-item--regular" style="font-size: 13px; letter-spacing: 0.04em;">
+          From {{ product.price_min | money }}
+        </span>
+      {%- elsif on_sale -%}
+        <span class="price-item price-item--sale" style="color: var(--sw-gold-deep); font-size: 13px;">{{ product.price | money }}</span>
+        <s class="price-item price-item--regular" style="color: var(--sw-muted); font-size: 13px; margin-left: 6px;">{{ product.compare_at_price | money }}</s>
+      {%- else -%}
+        <span class="price-item price-item--regular" style="font-size: 13px; letter-spacing: 0.04em;">
+          {{ product.price | money }}
+        </span>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
 </a>
