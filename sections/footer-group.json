@@ -31,6 +31,7 @@
         },
         "footer-2": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "heading": "The ShapedWigs finish",
             "subtext": "<p>Pre-styled wigs for brides, events, and elevated everyday wear. Designed for a natural look, polished silhouette, and photo-ready confidence.</p>"
@@ -45,7 +46,7 @@
       "settings": {
         "color_scheme": "scheme-4",
         "newsletter_enable": true,
-        "newsletter_heading": "Join the atelier list",
+        "newsletter_heading": "Join our email list",
         "enable_follow_on_shop": true,
         "show_social": true,
         "enable_country_selector": false,
