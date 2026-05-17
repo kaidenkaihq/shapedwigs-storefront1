@@ -62,6 +62,18 @@
       ],
       "settings": {}
     },
+    "sw-starter-styles": {
+      "type": "sw-starter-styles",
+      "settings": {
+        "eyebrow": "First-time buyer edit",
+        "heading": "Starter Styles Under $500",
+        "subheading": "A lower-ticket entry point into handcrafted ShapedWigs: polished, wearable favorites selected for first-time buyers who want a confident start.",
+        "product_handles": "jada,ciara,tasha,franchesca,halle,vera,gifty,nina",
+        "note": "Each style is still made to order with premium human hair and a 3–4 week lead time.",
+        "button_label": "View all wigs",
+        "button_link": "/collections/all"
+      }
+    },
     "sw-mosaic": {
       "type": "sw-collection-mosaic",
       "blocks": {
@@ -211,6 +223,7 @@
   "order": [
     "sw-hero",
     "sw-trust",
+    "sw-starter-styles",
     "sw-mosaic",
     "sw-featured",
     "sw-testimonial",
