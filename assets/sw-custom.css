@@ -1018,9 +1018,27 @@ label.form__label {
   .sw-featured-grid,
   .product-grid,
   .grid.product-grid {
+    display: grid !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     column-gap: 12px !important;
     row-gap: 28px !important;
+  }
+  .collection #product-grid.product-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: start;
+    margin-inline: 0 !important;
+  }
+  .collection #product-grid.product-grid .grid__item {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .collection #product-grid.product-grid .card-wrapper,
+  .collection #product-grid.product-grid .card {
+    width: 100%;
+    min-width: 0;
   }
   .card__information,
   .card-information {
