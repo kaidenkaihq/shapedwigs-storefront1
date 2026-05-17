@@ -822,6 +822,11 @@ label.form__label {
 .sw-ig-carousel__track::-webkit-scrollbar {
   display: none;
 }
+.sw-ig-app-feed {
+  grid-column: 1 / -1;
+  min-width: min(100%, 1180px);
+  scroll-snap-align: start;
+}
 .sw-ig-carousel__button {
   position: absolute;
   top: calc(50% - 28px);
@@ -884,6 +889,31 @@ label.form__label {
   transition: transform .6s ease;
 }
 .sw-ig-tile:hover img { transform: scale(1.06); }
+.sw-ig-empty {
+  display: grid;
+  align-content: center;
+  min-height: 220px;
+  padding: 28px;
+  border: 1px solid rgba(168, 132, 58, 0.26);
+  border-radius: 4px;
+  background: linear-gradient(135deg, rgba(255, 252, 245, 0.96), rgba(244, 235, 213, 0.82));
+  color: var(--sw-charcoal);
+  text-decoration: none;
+  scroll-snap-align: start;
+}
+.sw-ig-empty strong {
+  margin-top: 10px;
+  font-family: var(--sw-font-display);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.sw-ig-empty small {
+  margin-top: 10px;
+  color: rgba(39, 35, 30, 0.72);
+  font-size: 13px;
+  line-height: 1.45;
+}
 
 /* Featured products section -------------------------------- */
 .sw-featured-grid {

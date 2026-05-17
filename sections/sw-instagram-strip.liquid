@@ -2,7 +2,8 @@
   ShapedWigs · Instagram strip
   File: sections/sw-instagram-strip.liquid
 
-  Uses editable Instagram-style tiles in a horizontal carousel.
+  Uses Instagram app blocks or editable Instagram-style tiles in a
+  horizontal carousel.
 {% endcomment %}
 
 <section class="sw-section sw-section--cream" style="padding-bottom: 0;">
@@ -21,7 +22,8 @@
   </div>
 
   {%- assign fallback_collection = collections[section.settings.fallback_collection] -%}
-  {%- assign instagram_profile_url = section.settings.profile_url | default: 'https://www.instagram.com/shapedwigs/' -%}
+  {%- assign instagram_profile_url = section.settings.profile_url | default: settings.social_instagram_link | default: 'https://www.instagram.com/shapedwigs/' -%}
+  {%- assign rendered_feed_items = 0 -%}
 
   <div class="sw-ig-carousel sw-container" id="InstagramCarousel-{{ section.id }}">
     <button class="sw-ig-carousel__button sw-ig-carousel__button--prev" type="button" aria-label="Previous Instagram images">
@@ -31,15 +33,23 @@
     </button>
     <div class="sw-ig-carousel__track" tabindex="0" aria-label="Recent ShapedWigs Instagram images">
       {% for block in section.blocks %}
-        {%- liquid
-          assign fallback_product = fallback_collection.products[forloop.index0]
-          assign tile_image = block.settings.image | default: fallback_product.featured_image
-        -%}
-        <a class="sw-ig-tile"
-           href="{{ block.settings.link | default: instagram_profile_url }}"
-           target="_blank" rel="noopener"
-           {{ block.shopify_attributes }}>
-          {% if tile_image %}
+        {% case block.type %}
+          {% when '@app' %}
+            {%- assign rendered_feed_items = rendered_feed_items | plus: 1 -%}
+            <div class="sw-ig-app-feed" {{ block.shopify_attributes }}>
+              {% render block %}
+            </div>
+          {% when 'tile' %}
+            {%- liquid
+              assign fallback_product = fallback_collection.products[forloop.index0]
+              assign tile_image = block.settings.image | default: fallback_product.featured_image
+            -%}
+            {% if tile_image %}
+              {%- assign rendered_feed_items = rendered_feed_items | plus: 1 -%}
+              <a class="sw-ig-tile"
+                 href="{{ block.settings.link | default: instagram_profile_url }}"
+                 target="_blank" rel="noopener"
+                 {{ block.shopify_attributes }}>
             <img src="{{ tile_image | image_url: width: 700 }}"
                  srcset="{{ tile_image | image_url: width: 400 }} 400w,
                          {{ tile_image | image_url: width: 700 }} 700w,
@@ -49,9 +59,18 @@
                  height="{{ 700 | divided_by: tile_image.aspect_ratio | round }}"
                  alt="{{ tile_image.alt | default: 'Recent ShapedWigs Instagram styling' }}"
                  loading="lazy">
-          {% endif %}
-        </a>
+              </a>
+            {% endif %}
+        {% endcase %}
       {% endfor %}
+
+      {% if rendered_feed_items == 0 %}
+        <a class="sw-ig-empty" href="{{ instagram_profile_url }}" target="_blank" rel="noopener">
+          <span class="sw-eyebrow">Instagram feed source needed</span>
+          <strong>Connect an Instagram feed app block to show recent posts here.</strong>
+          <small>Shopify themes cannot pull recent Instagram images from a profile link alone.</small>
+        </a>
+      {% endif %}
     </div>
     <button class="sw-ig-carousel__button sw-ig-carousel__button--next" type="button" aria-label="Next Instagram images">
       <svg aria-hidden="true" focusable="false" viewBox="0 0 12 8">
@@ -126,6 +145,9 @@
     }
   ],
   "blocks": [
+    {
+      "type": "@app"
+    },
     {
       "type": "tile",
       "name": "Instagram tile",
