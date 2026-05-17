@@ -33,11 +33,23 @@
 
         <a href="{{ coll.url | default: '#' }}"
            class="sw-mosaic-card{% if forloop.first %} sw-mosaic-card--feature{% endif %}"
-           {{ block.shopify_attributes }}>
+          {{ block.shopify_attributes }}>
 
           {% if final_img %}
-            <div class="sw-mosaic-bg"
-                 style="background-image: url('{{ final_img | image_url: width: 1200 }}');"></div>
+            <div class="sw-mosaic-bg">
+              <img
+                src="{{ final_img | image_url: width: 1200 }}"
+                srcset="{{ final_img | image_url: width: 600 }} 600w,
+                        {{ final_img | image_url: width: 900 }} 900w,
+                        {{ final_img | image_url: width: 1200 }} 1200w,
+                        {{ final_img | image_url: width: 1600 }} 1600w"
+                sizes="{% if forloop.first %}(min-width: 990px) 44vw{% else %}(min-width: 990px) 28vw{% endif %}, 78vw"
+                width="1200"
+                height="{{ 1200 | divided_by: final_img.aspect_ratio | round }}"
+                alt="{{ final_img.alt | default: block.settings.title | default: coll.title | escape }}"
+                loading="lazy"
+              >
+            </div>
           {% endif %}
 
           <div>
