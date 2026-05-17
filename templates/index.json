@@ -1,210 +1,225 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "sw-hero": {
+      "type": "sw-hero",
+      "settings": {
+        "height": 680,
+        "hero_collection": "prestyled-wigs",
+        "eyebrow": "Pre-styled bridal wigs",
+        "heading": "<p>Luxury hair, <em>handcrafted</em><br>for unforgettable moments.</p>",
+        "subheading": "Ready-to-wear wigs styled for brides, formal moments, and everyday polish. Designed to look natural, photograph beautifully, and arrive ready for your story.",
+        "button_label_1": "Shop bridal styles",
+        "button_link_1": "shopify://collections/prestyled-wigs",
+        "button_label_2": "View best sellers",
+        "button_link_2": "shopify://collections/best-selling"
+      }
+    },
+    "sw-trust": {
+      "type": "sw-trust-strip",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "t1": {
+          "type": "item",
           "settings": {
-            "heading": "Image banner",
-            "heading_size": "h0"
+            "title": "Pre-styled",
+            "subtitle": "Ready to wear"
           }
         },
-        "text": {
-          "type": "text",
+        "t2": {
+          "type": "item",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
-            "text_style": "body"
+            "title": "Bridal focused",
+            "subtitle": "Photo-ready finish"
           }
         },
-        "button": {
-          "type": "buttons",
+        "t3": {
+          "type": "item",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "title": "Premium hair",
+            "subtitle": "Natural movement"
+          }
+        },
+        "t4": {
+          "type": "item",
+          "settings": {
+            "title": "$20 welcome",
+            "subtitle": "First purchase"
           }
         }
       },
       "block_order": [
-        "heading",
-        "text",
-        "button"
+        "t1",
+        "t2",
+        "t3",
+        "t4"
       ],
-      "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
-      }
+      "settings": {}
     },
-    "rich_text": {
-      "type": "rich-text",
+    "sw-mosaic": {
+      "type": "sw-collection-mosaic",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "m1": {
+          "type": "collection",
           "settings": {
-            "heading": "Talk about your brand",
-            "heading_size": "h1"
+            "collection": "best-selling",
+            "eyebrow": "Most loved",
+            "title": "Best-selling pre-styled wigs",
+            "link_label": "Shop best sellers"
           }
         },
-        "text": {
-          "type": "text",
+        "m2": {
+          "type": "collection",
           "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.<\/p>"
+            "collection": "new-arrivals",
+            "eyebrow": "Just landed",
+            "title": "New arrivals",
+            "link_label": "Discover"
+          }
+        },
+        "m3": {
+          "type": "collection",
+          "settings": {
+            "collection": "ready-to-style",
+            "eyebrow": "Everyday polish",
+            "title": "Ready to wear wigs",
+            "link_label": "Shop now"
+          }
+        },
+        "m4": {
+          "type": "collection",
+          "settings": {
+            "collection": "prestyled-wigs",
+            "eyebrow": "Signature",
+            "title": "Pre-styled wigs",
+            "link_label": "Explore"
           }
         }
       },
       "block_order": [
-        "heading",
-        "text"
+        "m1",
+        "m2",
+        "m3",
+        "m4"
       ],
       "settings": {
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 0
+        "eyebrow": "Curated collections",
+        "heading": "Find your signature finish.",
+        "subheading": "Shop by mood, moment, or styling need. Each collection is built around a polished, natural-looking result."
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "sw-featured": {
+      "type": "sw-featured-muses",
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "collection": "all",
+        "eyebrow": "Featured pieces",
+        "heading": "Meet the muses.",
+        "subheading": "A preview of customer favorites from the pre-styled collection, selected for softness, shape, and camera-ready detail.",
+        "collection": "prestyled-wigs",
         "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "show_view_all": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "columns_mobile": "2",
-        "padding_top": 28,
-        "padding_bottom": 36
+        "show_view_all": true,
+        "view_all_label": "View all wigs"
       }
     },
-    "collage": {
-      "type": "collage",
+    "sw-testimonial": {
+      "type": "sw-testimonial-band",
       "blocks": {
-        "collection-0": {
-          "type": "collection",
+        "q1": {
+          "type": "quote",
           "settings": {
-            "collection": ""
-          }
-        },
-        "product": {
-          "type": "product",
-          "settings": {
-            "product": "",
-            "second_image": false
-          }
-        },
-        "collection-1": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
+            "quote": "I cried when I tried it on. It looked so naturally mine, and every photo from the day felt effortless.",
+            "author": "ShapedWigs bride"
           }
         }
       },
       "block_order": [
-        "collection-0",
-        "product",
-        "collection-1"
+        "q1"
       ],
       "settings": {
-        "heading": "Multimedia collage",
-        "heading_size": "h2",
-        "desktop_layout": "left",
-        "mobile_layout": "collage",
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "eyebrow": "Bridal confidence"
       }
     },
-    "video": {
-      "type": "video",
-      "settings": {
-        "heading": "",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "heading_size": "h1",
-        "description": "",
-        "full_width": false,
-        "color_scheme": "scheme-1",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "multicolumn": {
-      "type": "multicolumn",
+    "sw-instagram": {
+      "type": "sw-instagram-strip",
       "blocks": {
-        "column1": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
+        "i1": {
+          "type": "tile",
+          "settings": {}
         },
-        "column2": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
+        "i2": {
+          "type": "tile",
+          "settings": {}
         },
-        "column3": {
-          "type": "column",
-          "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
-            "link_label": "",
-            "link": ""
-          }
+        "i3": {
+          "type": "tile",
+          "settings": {}
+        },
+        "i4": {
+          "type": "tile",
+          "settings": {}
+        },
+        "i5": {
+          "type": "tile",
+          "settings": {}
+        },
+        "i6": {
+          "type": "tile",
+          "settings": {}
         }
       },
       "block_order": [
-        "column1",
-        "column2",
-        "column3"
+        "i1",
+        "i2",
+        "i3",
+        "i4",
+        "i5",
+        "i6"
       ],
       "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "swipe_on_mobile": false,
-        "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "eyebrow": "@shapedwigs",
+        "heading": "As worn by our community.",
+        "subheading": "Real styling inspiration from brides, clients, and the ShapedWigs family.",
+        "profile_url": "https://www.instagram.com/shapedwigs/",
+        "fallback_collection": "best-selling"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Join the atelier list."
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Get early access to new drops, care notes, bridal styling inspiration, and $20 toward your first order.</p>"
+          }
+        },
+        "email_form": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "paragraph",
+        "email_form"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 64,
+        "padding_bottom": 72
       }
     }
   },
   "order": [
-    "image_banner",
-    "rich_text",
-    "featured_collection",
-    "collage",
-    "video",
-    "multicolumn"
+    "sw-hero",
+    "sw-trust",
+    "sw-mosaic",
+    "sw-featured",
+    "sw-testimonial",
+    "sw-instagram",
+    "newsletter"
   ]
 }

@@ -7,7 +7,6 @@
 
 {%- liquid
   assign img = product.featured_image
-  assign hover_img = product.images[1]
   assign on_sale = false
   if product.compare_at_price > product.price
     assign on_sale = true
@@ -31,6 +30,8 @@
                    {{ img | image_url: width: 800 }} 800w,
                    {{ img | image_url: width: 1200 }} 1200w"
            sizes="(min-width: 901px) 25vw, 50vw"
+           width="800"
+           height="{{ 800 | divided_by: img.aspect_ratio | round }}"
            alt="{{ img.alt | default: product.title }}"
            loading="lazy"
            style="width: 100%; height: 100%; object-fit: cover; transition: transform .8s ease;">

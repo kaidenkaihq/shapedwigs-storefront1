@@ -22,18 +22,26 @@
     </div>
   </div>
 
+  {%- assign fallback_collection = collections[section.settings.fallback_collection] -%}
+
   <div class="sw-ig-grid">
     {% for block in section.blocks %}
+      {%- liquid
+        assign fallback_product = fallback_collection.products[forloop.index0]
+        assign tile_image = block.settings.image | default: fallback_product.featured_image
+      -%}
       <a class="sw-ig-tile"
          href="{{ block.settings.link | default: section.settings.profile_url }}"
          target="_blank" rel="noopener"
          {{ block.shopify_attributes }}>
-        {% if block.settings.image %}
-          <img src="{{ block.settings.image | image_url: width: 600 }}"
-               srcset="{{ block.settings.image | image_url: width: 400 }} 400w,
-                       {{ block.settings.image | image_url: width: 800 }} 800w"
+        {% if tile_image %}
+          <img src="{{ tile_image | image_url: width: 600 }}"
+               srcset="{{ tile_image | image_url: width: 400 }} 400w,
+                       {{ tile_image | image_url: width: 800 }} 800w"
                sizes="(min-width: 769px) 220px, 33vw"
-               alt="{{ block.settings.image.alt | default: 'ShapedWigs on Instagram' }}"
+               width="600"
+               height="{{ 600 | divided_by: tile_image.aspect_ratio | round }}"
+               alt="{{ tile_image.alt | default: 'ShapedWigs community styling' }}"
                loading="lazy">
         {% endif %}
       </a>
@@ -72,6 +80,12 @@
       "id": "profile_url",
       "label": "Default Instagram profile link",
       "info": "Used when individual tile links are blank."
+    },
+    {
+      "type": "collection",
+      "id": "fallback_collection",
+      "label": "Fallback image collection",
+      "info": "Used for tiles without an assigned image."
     }
   ],
   "blocks": [
