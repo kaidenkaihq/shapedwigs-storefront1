@@ -149,27 +149,39 @@
       "blocks": {
         "i1": {
           "type": "tile",
-          "settings": {}
+          "settings": {
+            "link": ""
+          }
         },
         "i2": {
           "type": "tile",
-          "settings": {}
+          "settings": {
+            "link": ""
+          }
         },
         "i3": {
           "type": "tile",
-          "settings": {}
+          "settings": {
+            "link": ""
+          }
         },
         "i4": {
           "type": "tile",
-          "settings": {}
+          "settings": {
+            "link": ""
+          }
         },
         "i5": {
           "type": "tile",
-          "settings": {}
+          "settings": {
+            "link": ""
+          }
         },
         "i6": {
           "type": "tile",
-          "settings": {}
+          "settings": {
+            "link": ""
+          }
         }
       },
       "block_order": [
@@ -194,7 +206,8 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Join the atelier list."
+            "heading": "Join the list.",
+            "heading_size": "h1"
           }
         },
         "paragraph": {
