@@ -826,6 +826,66 @@ label.form__label {
   color: var(--sw-gold-deep);
   text-decoration: none;
 }
+.sw-ig-carousel {
+  position: relative;
+  max-width: 1320px;
+}
+.sw-ig-carousel__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: clamp(190px, 18vw, 250px);
+  gap: 10px;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding: 4px 54px 12px;
+  scroll-behavior: smooth;
+  scroll-padding-inline: 54px;
+  scroll-snap-type: inline mandatory;
+  scrollbar-width: none;
+}
+.sw-ig-carousel__track::-webkit-scrollbar {
+  display: none;
+}
+.sw-ig-carousel__button {
+  position: absolute;
+  top: calc(50% - 28px);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(168, 132, 58, 0.32);
+  border-radius: 50%;
+  background: rgba(255, 252, 245, 0.96);
+  color: var(--sw-gold-deep);
+  box-shadow: 0 14px 34px rgba(23, 20, 17, 0.12);
+  cursor: pointer;
+}
+.sw-ig-carousel__button svg {
+  width: 13px;
+  height: 13px;
+}
+.sw-ig-carousel__button--prev {
+  left: 10px;
+  transform: rotate(90deg);
+}
+.sw-ig-carousel__button--next {
+  right: 10px;
+  transform: rotate(-90deg);
+}
+.sw-ig-carousel__link {
+  margin: 16px 0 0;
+  text-align: center;
+  font-family: var(--sw-font-sans);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.sw-ig-carousel__link a {
+  color: var(--sw-gold-deep);
+  text-decoration: none;
+}
 .sw-ig-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -841,6 +901,7 @@ label.form__label {
   border-radius: 2px;
   overflow: hidden;
   display: block;
+  scroll-snap-align: start;
 }
 .sw-ig-tile img {
   width: 100%; height: 100%; object-fit: cover;
@@ -1251,6 +1312,18 @@ label.form__label {
     grid-template-columns: repeat(3, 1fr);
     gap: 3px;
     padding-inline: 0;
+  }
+  .sw-ig-carousel {
+    padding-inline: 0;
+  }
+  .sw-ig-carousel__track {
+    grid-auto-columns: minmax(168px, 62vw);
+    gap: 8px;
+    padding: 0 18px 10px;
+    scroll-padding-inline: 18px;
+  }
+  .sw-ig-carousel__button {
+    display: none;
   }
   .sw-ig-embed iframe {
     height: 660px;

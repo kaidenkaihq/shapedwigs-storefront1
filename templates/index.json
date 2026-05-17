@@ -182,6 +182,30 @@
           "settings": {
             "link": ""
           }
+        },
+        "i7": {
+          "type": "tile",
+          "settings": {
+            "link": ""
+          }
+        },
+        "i8": {
+          "type": "tile",
+          "settings": {
+            "link": ""
+          }
+        },
+        "i9": {
+          "type": "tile",
+          "settings": {
+            "link": ""
+          }
+        },
+        "i10": {
+          "type": "tile",
+          "settings": {
+            "link": ""
+          }
         }
       },
       "block_order": [
@@ -190,14 +214,18 @@
         "i3",
         "i4",
         "i5",
-        "i6"
+        "i6",
+        "i7",
+        "i8",
+        "i9",
+        "i10"
       ],
       "settings": {
         "eyebrow": "@shapedwigs",
         "heading": "As worn by our community.",
         "subheading": "Real styling inspiration from brides, clients, and the ShapedWigs family.",
         "profile_url": "https://www.instagram.com/shapedwigs/",
-        "use_profile_embed": true,
+        "use_profile_embed": false,
         "fallback_collection": "best-selling"
       }
     },
