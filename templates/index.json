@@ -71,7 +71,7 @@
         "product_handles": "jada,ciara,tasha,franchesca,halle,vera,gifty,nina",
         "note": "Each style is still made to order with premium human hair and a 3–4 week lead time.",
         "button_label": "View all wigs",
-        "button_link": "/collections/all"
+        "button_link": "shopify://collections/ready-to-style"
       }
     },
     "sw-mosaic": {
