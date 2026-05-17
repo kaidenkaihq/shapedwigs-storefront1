@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.footer.name",
   "type": "footer",
@@ -7,6 +16,7 @@
       "blocks": {
         "footer-0": {
           "type": "link_list",
+          "disabled": true,
           "settings": {
             "heading": "Quick links",
             "menu": "footer"
@@ -16,14 +26,14 @@
           "type": "link_list",
           "settings": {
             "heading": "Info",
-            "menu": "footer"
+            "menu": "policies"
           }
         },
         "footer-2": {
           "type": "text",
           "settings": {
             "heading": "The ShapedWigs finish",
-            "subtext": "<p>Pre-styled wigs for brides, events, and elevated everyday wear. Designed for a natural look, polished silhouette, and photo-ready confidence.<\/p>"
+            "subtext": "<p>Pre-styled wigs for brides, events, and elevated everyday wear. Designed for a natural look, polished silhouette, and photo-ready confidence.</p>"
           }
         }
       },
@@ -36,6 +46,7 @@
         "color_scheme": "scheme-4",
         "newsletter_enable": true,
         "newsletter_heading": "Join the atelier list",
+        "enable_follow_on_shop": true,
         "show_social": true,
         "enable_country_selector": false,
         "enable_language_selector": false,
