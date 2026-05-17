@@ -9,6 +9,10 @@
 
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- else -%}
+      <link rel="icon" type="image/png" sizes="32x32" href="{{ 'shapedwigs-favicon-32.png' | asset_url }}">
+      <link rel="icon" type="image/png" sizes="64x64" href="{{ 'shapedwigs-favicon-64.png' | asset_url }}">
+      <link rel="apple-touch-icon" sizes="180x180" href="{{ 'shapedwigs-apple-touch-icon.png' | asset_url }}">
     {%- endif -%}
 
     {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
