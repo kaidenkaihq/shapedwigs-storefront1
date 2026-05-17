@@ -144,17 +144,6 @@
         "eyebrow": "Bridal confidence"
       }
     },
-    "sw-instagram": {
-      "type": "sw-instagram-strip",
-      "disabled": true,
-      "settings": {
-        "eyebrow": "@shapedwigs",
-        "heading": "As worn by our community.",
-        "subheading": "Real styling inspiration from brides, clients, and the ShapedWigs family.",
-        "profile_url": "https://www.instagram.com/shapedwigs/",
-        "fallback_collection": ""
-      }
-    },
     "newsletter": {
       "type": "newsletter",
       "blocks": {
@@ -188,10 +177,10 @@
         "padding_bottom": 72
       }
     },
-    "17790393125e6f9635": {
+    "1779039353db1c1efd": {
       "type": "apps",
       "blocks": {
-        "instafeed_app_block_RdV7t8": {
+        "instafeed_app_block_y3bGnX": {
           "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
           "settings": {
             "title": "",
@@ -211,7 +200,7 @@
         }
       },
       "block_order": [
-        "instafeed_app_block_RdV7t8"
+        "instafeed_app_block_y3bGnX"
       ],
       "settings": {
         "include_margins": true
@@ -224,8 +213,7 @@
     "sw-mosaic",
     "sw-featured",
     "sw-testimonial",
-    "17790393125e6f9635",
-    "sw-instagram",
+    "1779039353db1c1efd",
     "newsletter"
   ]
 }
