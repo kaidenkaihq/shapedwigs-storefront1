@@ -2,8 +2,7 @@
   ShapedWigs · Instagram strip
   File: sections/sw-instagram-strip.liquid
 
-  Uses editable Instagram-style tiles in a horizontal carousel by default.
-  Instagram's profile embed remains available as an alternate layout.
+  Uses editable Instagram-style tiles in a horizontal carousel.
 {% endcomment %}
 
 <section class="sw-section sw-section--cream" style="padding-bottom: 0;">
@@ -23,89 +22,68 @@
 
   {%- assign fallback_collection = collections[section.settings.fallback_collection] -%}
   {%- assign instagram_profile_url = section.settings.profile_url | default: 'https://www.instagram.com/shapedwigs/' -%}
-  {%- assign instagram_profile_path = instagram_profile_url | split: '?' | first | split: 'instagram.com/' | last -%}
-  {%- assign instagram_handle = instagram_profile_path | split: '/' | first | default: 'shapedwigs' -%}
-  {%- assign instagram_embed_url = 'https://www.instagram.com/' | append: instagram_handle | append: '/embed' -%}
 
-  {% if section.settings.use_profile_embed %}
-    <div class="sw-ig-embed sw-container">
-      <iframe
-        title="ShapedWigs Instagram feed"
-        src="{{ instagram_embed_url }}"
-        loading="lazy"
-        allowtransparency="true"
-        frameborder="0"
-        scrolling="no"
-      ></iframe>
-      <p class="sw-ig-embed__fallback">
-        <a href="{{ instagram_profile_url }}" target="_blank" rel="noopener">
-          View @shapedwigs on Instagram
+  <div class="sw-ig-carousel sw-container" id="InstagramCarousel-{{ section.id }}">
+    <button class="sw-ig-carousel__button sw-ig-carousel__button--prev" type="button" aria-label="Previous Instagram images">
+      <svg aria-hidden="true" focusable="false" viewBox="0 0 12 8">
+        <path d="M1 1.2 6 6.8l5-5.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="sw-ig-carousel__track" tabindex="0" aria-label="Recent ShapedWigs Instagram images">
+      {% for block in section.blocks %}
+        {%- liquid
+          assign fallback_product = fallback_collection.products[forloop.index0]
+          assign tile_image = block.settings.image | default: fallback_product.featured_image
+        -%}
+        <a class="sw-ig-tile"
+           href="{{ block.settings.link | default: instagram_profile_url }}"
+           target="_blank" rel="noopener"
+           {{ block.shopify_attributes }}>
+          {% if tile_image %}
+            <img src="{{ tile_image | image_url: width: 700 }}"
+                 srcset="{{ tile_image | image_url: width: 400 }} 400w,
+                         {{ tile_image | image_url: width: 700 }} 700w,
+                         {{ tile_image | image_url: width: 900 }} 900w"
+                 sizes="(min-width: 990px) 220px, (min-width: 750px) 28vw, 58vw"
+                 width="700"
+                 height="{{ 700 | divided_by: tile_image.aspect_ratio | round }}"
+                 alt="{{ tile_image.alt | default: 'Recent ShapedWigs Instagram styling' }}"
+                 loading="lazy">
+          {% endif %}
         </a>
-      </p>
+      {% endfor %}
     </div>
-  {% else %}
-    <div class="sw-ig-carousel sw-container" id="InstagramCarousel-{{ section.id }}">
-      <button class="sw-ig-carousel__button sw-ig-carousel__button--prev" type="button" aria-label="Previous Instagram images">
-        <svg aria-hidden="true" focusable="false" viewBox="0 0 12 8">
-          <path d="M1 1.2 6 6.8l5-5.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-      <div class="sw-ig-carousel__track" tabindex="0" aria-label="Recent ShapedWigs Instagram images">
-        {% for block in section.blocks %}
-          {%- liquid
-            assign fallback_product = fallback_collection.products[forloop.index0]
-            assign tile_image = block.settings.image | default: fallback_product.featured_image
-          -%}
-          <a class="sw-ig-tile"
-             href="{{ block.settings.link | default: instagram_profile_url }}"
-             target="_blank" rel="noopener"
-             {{ block.shopify_attributes }}>
-            {% if tile_image %}
-              <img src="{{ tile_image | image_url: width: 700 }}"
-                   srcset="{{ tile_image | image_url: width: 400 }} 400w,
-                           {{ tile_image | image_url: width: 700 }} 700w,
-                           {{ tile_image | image_url: width: 900 }} 900w"
-                   sizes="(min-width: 990px) 220px, (min-width: 750px) 28vw, 58vw"
-                   width="700"
-                   height="{{ 700 | divided_by: tile_image.aspect_ratio | round }}"
-                   alt="{{ tile_image.alt | default: 'Recent ShapedWigs Instagram styling' }}"
-                   loading="lazy">
-            {% endif %}
-          </a>
-        {% endfor %}
-      </div>
-      <button class="sw-ig-carousel__button sw-ig-carousel__button--next" type="button" aria-label="Next Instagram images">
-        <svg aria-hidden="true" focusable="false" viewBox="0 0 12 8">
-          <path d="M1 1.2 6 6.8l5-5.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-      <p class="sw-ig-carousel__link">
-        <a href="{{ instagram_profile_url }}" target="_blank" rel="noopener">
-          View more on Instagram
-        </a>
-      </p>
-    </div>
+    <button class="sw-ig-carousel__button sw-ig-carousel__button--next" type="button" aria-label="Next Instagram images">
+      <svg aria-hidden="true" focusable="false" viewBox="0 0 12 8">
+        <path d="M1 1.2 6 6.8l5-5.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <p class="sw-ig-carousel__link">
+      <a href="{{ instagram_profile_url }}" target="_blank" rel="noopener">
+        View more on Instagram
+      </a>
+    </p>
+  </div>
 
-    <script>
-      (() => {
-        const carousel = document.getElementById('InstagramCarousel-{{ section.id }}');
-        if (!carousel) return;
+  <script>
+    (() => {
+      const carousel = document.getElementById('InstagramCarousel-{{ section.id }}');
+      if (!carousel) return;
 
-        const track = carousel.querySelector('.sw-ig-carousel__track');
-        const previous = carousel.querySelector('.sw-ig-carousel__button--prev');
-        const next = carousel.querySelector('.sw-ig-carousel__button--next');
-        const step = () => Math.max(track.clientWidth * 0.82, 240);
+      const track = carousel.querySelector('.sw-ig-carousel__track');
+      const previous = carousel.querySelector('.sw-ig-carousel__button--prev');
+      const next = carousel.querySelector('.sw-ig-carousel__button--next');
+      const step = () => Math.max(track.clientWidth * 0.82, 240);
 
-        previous?.addEventListener('click', () => {
-          track.scrollBy({ left: -step(), behavior: 'smooth' });
-        });
+      previous?.addEventListener('click', () => {
+        track.scrollBy({ left: -step(), behavior: 'smooth' });
+      });
 
-        next?.addEventListener('click', () => {
-          track.scrollBy({ left: step(), behavior: 'smooth' });
-        });
-      })();
-    </script>
-  {% endif %}
+      next?.addEventListener('click', () => {
+        track.scrollBy({ left: step(), behavior: 'smooth' });
+      });
+    })();
+  </script>
 
   <div style="height: 64px;"></div>
 </section>
@@ -139,13 +117,6 @@
       "id": "profile_url",
       "label": "Default Instagram profile link",
       "info": "Used for the live Instagram embed and when individual tile links are blank."
-    },
-    {
-      "type": "checkbox",
-      "id": "use_profile_embed",
-      "label": "Use Instagram profile embed instead of carousel",
-      "default": false,
-      "info": "Instagram controls the embed layout. Keep this off for the horizontal carousel."
     },
     {
       "type": "collection",
