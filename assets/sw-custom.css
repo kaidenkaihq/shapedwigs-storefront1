@@ -1509,3 +1509,26 @@ label.form__label {
     font-size: 16px !important;
   }
 }
+
+/* Privy Join Us signup popup */
+@media screen and (max-width: 749px) {
+  .privy-widget-campaign-3775393 .privy-widget-popup {
+    box-sizing: border-box;
+    width: min(360px, calc(100vw - 32px)) !important;
+    min-width: 0 !important;
+    max-width: calc(100vw - 32px) !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: min(500px, 76vh) !important;
+    max-height: min(500px, 76dvh) !important;
+    margin-inline: auto;
+    overflow-y: auto !important;
+    overscroll-behavior: contain;
+    border-radius: 8px;
+  }
+
+  .privy-widget-campaign-3775393 .privy-widget-popup .privy-dismiss-content {
+    top: 8px;
+    right: 8px;
+  }
+}
