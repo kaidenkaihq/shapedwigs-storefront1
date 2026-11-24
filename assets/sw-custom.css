@@ -1527,6 +1527,24 @@ label.form__label {
     border-radius: 8px;
   }
 
+  .privy-widget-campaign-3775393 .privy-widget-popup:has(.image1-slot) {
+    grid-template-rows: auto !important;
+    row-gap: 8px !important;
+  }
+
+  .privy-widget-campaign-3775393 .privy-widget-popup .image1-slot {
+    height: clamp(80px, 16dvh, 120px);
+  }
+
+  .privy-widget-campaign-3775393 .privy-widget-popup .image1-slot .privy-widget-image,
+  .privy-widget-campaign-3775393 .privy-widget-popup .image1-slot img {
+    height: 100% !important;
+  }
+
+  .privy-widget-campaign-3775393 .privy-widget-popup .disclaimer-slot {
+    padding-block: 4px 14px !important;
+  }
+
   .privy-widget-campaign-3775393 .privy-widget-popup .privy-dismiss-content {
     top: 8px;
     right: 8px;
