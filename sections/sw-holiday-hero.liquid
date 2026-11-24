@@ -1,0 +1,67 @@
+<div class="sw-holiday-hero" id="holiday-special">
+  <h1 class="visually-hidden">ShapedWigs Holiday Special</h1>
+  <img
+    class="sw-holiday-hero__poster"
+    src="{{ 'shapedwigs-holiday-2026.webp' | asset_url }}"
+    width="1122"
+    height="1402"
+    loading="eager"
+    fetchpriority="high"
+    alt="November 23 through December 26. Get $70 off ready-to-wear wig orders of $400 or more with code 70OFF, or $170 off pre-styled wig orders of $850 or more with code 170OFF."
+  >
+  <div class="sw-holiday-hero__links">
+    <a class="button button--primary" href="{{ section.settings.ready_to_wear_link | default: '/collections/ready-to-style' }}">
+      Shop Ready-to-Wear Wigs
+    </a>
+    <a class="button button--primary" href="{{ section.settings.pre_styled_link | default: '/collections/prestyled-wigs' }}">
+      Shop Pre-Styled Wigs
+    </a>
+  </div>
+</div>
+
+{% stylesheet %}
+  .sw-holiday-hero {
+    display: grid;
+    justify-items: center;
+    gap: 16px;
+    padding: 16px 16px 20px;
+    background: #171411;
+  }
+
+  .sw-holiday-hero__poster {
+    display: block;
+    width: 100%;
+    max-width: 520px;
+    height: auto;
+  }
+
+  .sw-holiday-hero__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .sw-holiday-hero__links .button {
+    text-align: center;
+  }
+
+  @media (min-width: 750px) {
+    .sw-holiday-hero__poster {
+      max-width: min(520px, 53svh);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "SW Holiday Special",
+  "tag": "section",
+  "settings": [
+    { "type": "url", "id": "ready_to_wear_link", "label": "Ready-to-wear collection" },
+    { "type": "url", "id": "pre_styled_link", "label": "Pre-styled collection" }
+  ],
+  "presets": [{ "name": "SW Holiday Special" }]
+}
+{% endschema %}

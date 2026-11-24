@@ -9,8 +9,13 @@
  */
 {
   "sections": {
+    "sw-holiday-hero": {
+      "type": "sw-holiday-hero",
+      "settings": {}
+    },
     "sw-hero": {
       "type": "sw-hero",
+      "disabled": true,
       "settings": {
         "height": 680,
         "eyebrow": "Pre-styled bridal wigs",
@@ -221,6 +226,7 @@
     }
   },
   "order": [
+    "sw-holiday-hero",
     "sw-hero",
     "sw-trust",
     "sw-starter-styles",
